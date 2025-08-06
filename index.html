@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let humscore=0;
+        let compscore=0;
+        let draw=0;
+        let inv=0;
+        function getcompchoice()
+        {
+            let randomNumber = Math.floor(Math.random()*100+1);
+            console.log(randomNumber)
+            if(randomNumber%3==0)
+            return('rock');
+            else if(randomNumber%5==0)
+            return('paper');
+            else
+            return("scissor");
+        }
+        // console.log(getcompchoice());
+    function gethumchoice()
+    {
+        let choice=prompt('enter your choice rock paper scissor','')
+        // console.log(choice);
+        return choice;
+    }
+    // gethumchoice();
+     
+    // console.log(x,y);
+   
+    // playround(x,y);
+function playgame(x,y)
+{ 
+     console.log("comp choice:"+x+" user choice:"+y);
+       if(y=='rock'||y=='paper'||y=='scissor')
+       {
+    if(x==y)
+    {
+        {alert('draw');
+        draw++;}  
+    }
+        else if(x=='rock')
+    {
+        if(y=='paper')
+        {alert("user won");
+        humscore++;}
+        else 
+        {alert("computer won");
+        compscore++;}
+    }
+    else if(x=='paper')
+    {
+        if(y=='rock')
+        {alert("user won");
+        humscore++;}
+        else 
+        {alert("computer won");
+        compscore++;}
+    }
+    else if(x=='scissor')
+    {
+        if(y=='rock')
+        {alert("user won");
+        humscore++;}
+        else 
+        {alert("computer won");
+        compscore++;}
+    }
+}
+else
+{alert("invalid value");
+  inv++;  }  
+
+}
+ for(let i=0;i<5;i++)
+{    const x=getcompchoice().toLowerCase();
+    const y=gethumchoice().toLowerCase();
+playgame(x,y);
+}
+console.log('User Score: '+humscore);
+console.log('Computer Score: '+compscore);
+console.log('Draw Score: '+draw);
+alert('User Score: '+humscore +' Computer Score: '+compscore+' Draw Score: '+draw+ ' invalid enteries: '+inv);
+if(humscore>compscore)
+alert('user won')
+else if(humscore<compscore)
+alert('computer won')
+else
+alert('draw')
+
+    </script>
+</body>
+</html>

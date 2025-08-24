@@ -3,14 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissor Game</title>
 </head>
 <body>
+    <button id="rock"><h2>ROCK</h2></button>
+    <button id="paper"><h2>PAPER</h2></button>
+    <button id="scissor"><h2>SCISSOR</h2></button>
+    <div id="output">
+    </div>
+     <p>
+       <h3> 
+        <div id="FINAL">
+       FIRST TO WIN 5 ROUNDS WIN THE GAME</div>
+    </h3>
+        
+    </p>
+</div>
+        </body>
     <script>
         let humscore=0;
         let compscore=0;
         let draw=0;
         let inv=0;
+        let choi="";
+       
+        const brock=document.querySelector("#rock");
+        const bpaper=document.querySelector("#paper");
+        const bscissor=document.querySelector("#scissor");
+        const output=document.querySelector("#output");
+        const final=document.querySelector("#FINAL");
+        
+
+        brock.addEventListener("click",() =>{
+         choi= "rock";
+         console.log("choice:"+choi);
+          let x=getcompchoice().toLowerCase();
+            console.log("Computer choice:"+x);
+            let y=choi;
+           let z= playgame(x,y);
+           output.textContent="RESULT OF THIS ROUND:"+z;
+           if(humscore>=5||compscore>=5)
+           {if(humscore>=5)
+           {final.textContent=" USER WON! \n "+"User score: "+humscore+ 
+           ' Computer Score: '+compscore+    
+           ' Draw Score: '+draw;
+           }
+           else
+            {final.textContent="COMPUTER WON! \n"+"User score: "+humscore+ 
+           ' Computer Score: '+compscore+    
+           ' Draw Score: '+draw;}
+            }
+          
+           console.log('User Score: '+humscore);
+            console.log('Computer Score: '+compscore);
+            console.log('Draw Score: '+draw);
+         })
+          bpaper.addEventListener("click",() =>{
+           choi= "paper";
+             console.log("choice:"+choi);
+             const x=getcompchoice().toLowerCase();
+            console.log("Computer choice:"+x);
+            const y=choi;
+            z=playgame(x,y);
+            output.textContent="RESULT OF THIS ROUND:"+z;
+            if(humscore>=5||compscore>=5)
+           {if(humscore>=5)
+           {final.textContent=" USER WON! \n "+"User score: "+humscore+ 
+           ' Computer Score: '+compscore+    
+           ' Draw Score: '+draw;
+           }
+           else
+            {final.textContent="COMPUTER WON! \n"+"User score: "+humscore+ 
+           ' Computer Score: '+compscore+    
+           ' Draw Score: '+draw;}
+            }
+           console.log('User Score: '+humscore);
+            console.log('Computer Score: '+compscore);
+            console.log('Draw Score: '+draw);
+         })
+          bscissor.addEventListener("click",() =>{
+            choi= "scissor";
+             console.log("choice:"+choi);
+             const x=getcompchoice().toLowerCase();
+            console.log("Computer choice:"+x);
+            const y=choi;
+            z=playgame(x,y);
+            output.textContent="RESULT OF THIS ROUND:"+z;
+           if(humscore>=5||compscore>=5)
+           {if(humscore>=5)
+           {final.textContent=" USER WON! \n "+"User score: "+humscore+ 
+           ' Computer Score: '+compscore+    
+           ' Draw Score: '+draw;
+           }
+           else
+            {final.textContent="COMPUTER WON! \n"+"User score: "+humscore+ 
+           ' Computer Score: '+compscore+    
+           ' Draw Score: '+draw;}
+            } 
+           console.log('User Score: '+humscore);
+            console.log('Computer Score: '+compscore);
+            console.log('Draw Score: '+draw);
+            //playgame(x,y);
+         })
+         //console.log("choice:"+choi);
+          
+          //output.appendChild(final);
+
+        
+                     
+
+        
+
+
+        //  if(humscore>=5||compscore>=5) //showing results
+        //  {
+        //     console.log('User Score: '+humscore);
+        //     console.log('Computer Score: '+compscore);
+        //     console.log('Draw Score: '+draw);
+        //  }
+        
+
         function getcompchoice()
         {
             let randomNumber = Math.floor(Math.random()*100+1);
@@ -25,10 +137,12 @@
         // console.log(getcompchoice());
     function gethumchoice()
     {
-        let choice=prompt('enter your choice rock paper scissor','')
-        // console.log(choice);
-        return choice;
+        // let choice=prompt('enter your choice rock paper scissor','')
+        // // console.log(choice);
+        // return choice;
+        
     }
+    
     // gethumchoice();
      
     // console.log(x,y);
@@ -41,35 +155,43 @@ function playgame(x,y)
        {
     if(x==y)
     {
-        {alert('draw');
-        draw++;}  
+        {//alert('draw');
+        draw++;
+        return "draw";    }  
     }
         else if(x=='rock')
     {
         if(y=='paper')
-        {alert("user won");
-        humscore++;}
+        {//alert("user won");
+        humscore++;
+        return "user won";}
         else 
-        {alert("computer won");
-        compscore++;}
+        {//alert("computer won");
+        compscore++;
+        return "computer won";}
     }
     else if(x=='paper')
     {
         if(y=='rock')
-        {alert("user won");
-        humscore++;}
+        {//alert("user won");
+        compscore++;
+        return "computer won";}
         else 
-        {alert("computer won");
-        compscore++;}
+        {//alert("computer won");
+        humscore++;
+        return "user won";}
+        
     }
     else if(x=='scissor')
     {
         if(y=='rock')
-        {alert("user won");
-        humscore++;}
+        {//alert("user won");
+        humscore++;
+        return "user won";}
         else 
-        {alert("computer won");
-        compscore++;}
+        {//alert("computer won");
+        compscore++;
+    return "computer won";}
     }
 }
 else
@@ -77,22 +199,26 @@ else
   inv++;  }  
 
 }
- for(let i=0;i<5;i++)
-{    const x=getcompchoice().toLowerCase();
-    const y=gethumchoice().toLowerCase();
-playgame(x,y);
-}
+//  for(let i=0;(i<5);i++)
+// {    const x=getcompchoice().toLowerCase();
+//     console.log("Computer choice:"+x);
+//     const y=choi;
+
+// playgame(x,y);
+// }
+
 console.log('User Score: '+humscore);
 console.log('Computer Score: '+compscore);
 console.log('Draw Score: '+draw);
-alert('User Score: '+humscore +' Computer Score: '+compscore+' Draw Score: '+draw+ ' invalid enteries: '+inv);
-if(humscore>compscore)
-alert('user won')
-else if(humscore<compscore)
-alert('computer won')
-else
-alert('draw')
+//alert('User Score: '+humscore +' Computer Score: '+compscore+' Draw Score: '+draw+ ' invalid enteries: '+inv);
+// if(humscore>compscore)
+// alert('user won')
+// else if(humscore<compscore)
+// alert('computer won')
+// else
+// alert('draw')
 
     </script>
+    
 </body>
 </html>
